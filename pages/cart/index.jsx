@@ -10,6 +10,17 @@ function ProductPage() {
   }, []);
 
   console.log(products);
-  return <div style={{ color: "pink" }}>홈페이지</div>;
+  return (
+    <div style={{ color: "pink" }}>
+      상품 목록 페이지
+      <ul>
+        {products &&
+          products.map((product) => {
+            return <li key={product.id}>{products.name}</li>;
+          })}
+        {/* key를 적어줘야 함 */}
+      </ul>
+    </div>
+  );
 }
 export default ProductPage;
