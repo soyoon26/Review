@@ -15,7 +15,6 @@ function ProductList() {
 
   return (
     <div>
-      ProductList
       <ul>
         {products &&
           products.map((product) => {
