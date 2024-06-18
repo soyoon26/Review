@@ -1,24 +1,24 @@
 import { fetchProductById } from "@/api";
 import ProductHeader from "@/components/ProductHeader";
+import ProductInfo from "@/components/ProductInfo";
 import axios from "axios";
 import React from "react";
 
-export default function ProductInfoPage({ message, productInfo }) {
+export default function ProductInfoPage({ productDetail }) {
   return (
     <div>
       <ProductHeader title="상품 상세 정보 페이지" />
-      ProductInfoPage : {message}
-      <p>{productInfo.name}</p>
+      {/* <p>{productDetail.name}</p> */}
+      <ProductInfo productDetail={productDetail} />
     </div>
   );
 }
 export async function getServerSideProps(context) {
   const id = context.params.id;
-  const response = await fetchProductById(id);
+  const { data } = await fetchProductById(id); // ctrl + space = 가져올 수 있는 항목들을 볼 수 있음
   return {
     props: {
-      message: "서버에서 보내준 메세지",
-      productInfo: response.data,
+      productDetail: data,
     },
   };
 }
